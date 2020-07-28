@@ -44,3 +44,46 @@ Puppet & Chef - work on Pull mechanism.
 
 Ansible doesnt requires any agent.
 
+Inventory is like DB of IP Adderess
+After adding the IPs in the config file
+---------------------------------------
+ansible all --list-hosts
+---------------------------------------
+  hosts (2):
+    192.168.31.137
+    192.168.31.100
+---------------------------------------
+
+ansible all -m package -a "name=filezilla state=install"
+
+internally it uses SSH to connect and perform the operations
+To SSH, it requires IP, username & password
+
+In inventorty file
+
+192.168.31.162  ansible_ssh_user=root ansible_ssh_pass=password
+
+We need to install "sshpass" as well.
+
+------------------------------------------------------
+192.168.31.56 | FAILED! => {
+    "msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."
+}
+------------------------------------------------------
+[defaults]
+host_key_checking = false
+------------------------------------------------------
+
+ansible all -m package -a "name=firefox state=present"
+------------------------------------------------------
+192.168.31.56 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/libexec/platform-python"
+    },
+    "changed": false,
+    "msg": "Nothing to do",
+    "rc": 0,
+    "results": []
+}
+
+
