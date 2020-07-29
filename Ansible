@@ -87,3 +87,41 @@ ansible all -m package -a "name=firefox state=present"
 }
 
 
+
+---------------------------------------------------
+How to setup/configure the webserver using Ansible:
+---------------------------------------------------
+
+step1:
+what: install software apache web server "httpd"
+
+$ ansible -m package -a httpd install
+
+""""know OS: redhat 8""""
+""""how #yum install httpd""""
+
+intelligence comes from module
+
+module: package
+
+step2:
+what: copy webpage/website from home.html to /var/www/html
+#ansible -m copy "src=home.html dest=/var/www/html"
+
+
+step3:
+what: start web server program/service/deamon: "httpd"
+how: manual #systemctl start httpd
+#ansible -m service -a "name=httpd state=started"
+
+Ansible is not language its a tool.
+
+Ansible Playbook
+
+
+How to run the Ansible playbook
+$ ansible-playbook <playbook-filename>.yml
+
+
+
+
