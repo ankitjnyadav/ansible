@@ -122,6 +122,39 @@ Ansible Playbook
 How to run the Ansible playbook
 $ ansible-playbook <playbook-filename>.yml
 
+ansible all -m ping
+
+[group_name]
+192.168.0.1
+192.168.0.2
+192.168.0.3
+
+-host: web
+ vars:
+ - package_name: "httpd"
+ - other: {{other_name}}
+ task:
+ - package:
+     name:  "httpd"
+     state: present
+ - copy:
+     #src: "home.html"
+     content: "This is my data and package name is {{package_name}}\n"
+     dest: "/var/www/html"
+ - debug:
+   var: package_name
+
+
+ansible-playbook -e other_name=ay
+
+Jinja framework
+Jinja2
+
+Whatever we need to do Ansible has module. That makes it intelligent.
+
+Exception handling--
+
+ignore_erros: yes
 
 
 
