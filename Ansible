@@ -156,5 +156,29 @@ Exception handling--
 
 ignore_erros: yes
 
+ansible group_name -m ping
+
+Ansible is all about:
+
+What to do
+It take cares of how to do 
+
+Ansible create a layer inbetween, which is abstractions
+Resources Abstraction Layer (RAL). hides underlying OS commands.
+
+
+dns.conf
+nameserver 192.168.0.1
+
+- hosts: all
+  vars:
+	- dnsip: 192.168.0.1
+  tasks:
+  - copy:
+	src: dsn.conf
+	dest: /etc/resolv.conf
+
+dns.conf
+nameserver {{ dnsip }}
 
 
