@@ -182,3 +182,79 @@ dns.conf
 nameserver {{ dnsip }}
 
 
+Facts are the live(runtime) information about the OS
+
+ansible all -m ping
+
+ansible --version
+
+cat /etc/ansible/ansible.cfg
+cat /etc/myhosts.txt
+
+
+
+- hosts: all
+  tasks:
+	- package:
+		name: "httpd"
+		state: "present"
+
+
+
+- hosts: all
+  vars:
+	x: "AY"
+  task:
+  - debug: 
+	var: ansible_os_family
+  - debug: 
+	msg: "My of name is : {{ ansible_os_family }}"
+
+
+
+
+ansible 192.168.0.162 -m setup
+Retrives all the information of  that particular node
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
