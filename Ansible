@@ -216,6 +216,119 @@ cat /etc/myhosts.txt
 ansible 192.168.0.162 -m setup
 Retrives all the information of  that particular node
 
+Step 1
+What to do # yum configure, url for docker software: module
+
+
+Step2:
+Install the docker software
+
+Step3: Service start: docker
+module: service
+
+Step4: Get Pip3 cmd: software: python36
+
+Step5: install python lib: docker-py
+
+Step 6: image download 
+module: docker_image
+
+
+
+- hosts: dockerhost
+  gather_facts: false
+  tasks:
+   - name: conf yum for docker
+     yum_repository:
+       name: dockerrepo
+       baseurl: https://download.docker.com/linux/centos/7/x86_64/stable
+       description: This is repo of our docker yum configuration
+       enabled: true
+       gpgcheck: no
+     
+   - name: Install docker for RedHat
+     command: "yum install docker-ce -y --nobest"
+	#Command doesnt work with Idempotance
+
+   - name: Install Python
+     package:
+       name: "python36"
+       state: present
+
+   - name: Install python library
+     pip:
+       name: docker-py
+
+   - name: Start docker srevice
+     service:
+       name: "docker"
+       state: started
+       enabled: true   
+
+   - name: Install docker
+     docker_image:
+       name: ubuntu:14.04
+       source: pull
+
+   - name: run container
+     docker_container:
+       name: myos_1
+       image: ubuntu:14.04
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
