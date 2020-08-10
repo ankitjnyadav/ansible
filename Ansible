@@ -276,22 +276,51 @@ module: docker_image
        image: ubuntu:14.04
 
 
+---------------------------
+Ansible Vault
+---------------------------
+
+mail.yml
+--------------------
+- host: localhost
+  vars_files:
+   - var.yml
+  tasks:
+  - name: Sending an e-mail using GMail SMTP servers
+    mail:
+      host: smtp.gmail.com
+      port: 587
+      username: "{{ uname }}"
+      password: "{{ mypass }}"
+      to: ankitjnyadav@gmail.com
+      subject: Mail using Ansible
+      body: Hello World from Ansible  {{ ansible_hostname }}
 
 
+var.yml
+----------------
+vars:
+  - uname: "ayforalllogin@gmail.com"
+  - mypass: "mypass"
+ 
 
 
+ansible-playbook mail.yml
 
 
+ansible-vault encrpyt var.yml
 
 
+ansible-playbook --ask--vault-pass mail.yml
+
+ansible-vault create newvaultfile.yml
+
+To change the passowrd
+
+ansible-vault rekey newvaultfile.yml
 
 
-
-
-
-
-
-
+Interesting command ;)
 
 
 
