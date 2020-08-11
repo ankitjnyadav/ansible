@@ -324,14 +324,22 @@ Interesting command ;)
 
 
 
+------------------------------------------
 
 
+OS Provisioning AWS
+
+AWS (To interact)
+- Web UI
+- CLI
+- APIs
 
 
+Ansible EC2 Documentation
+https://docs.ansible.com/ansible/2.3/ec2_module.html
 
 
-
-
+vault ids
 
 
 
