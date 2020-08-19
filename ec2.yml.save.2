@@ -1,0 +1,19 @@
+- host: localhost
+- name: Provisioning the OS on AWS
+- ec2:
+- ec2:
+    key_name: mykey
+    instance_type: t2.micro
+    image: ami-123456
+    wait: yes
+    group: webserver
+    count: 3
+    vpc_subnet_id: subnet-29e63245
+    assign_public_ip: yeskey_name: ankit
+	instance_type: t2.micro
+	image: ami-0ebc1ac48dfd14136
+	wait: yes
+	count: 3
+	vpc_subnet_id: subnet-884872e0
+	assign_public_ip: yes
+
