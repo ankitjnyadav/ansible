@@ -347,7 +347,15 @@ vault ids
 
 Roles in Ansible
 
+Dynamic Inventory in Ansible
 
+If you use Amazon Web Services EC2, maintaining an inventory file might not be the best approach, because hosts may come and go over time, be managed by external applications, or you might even be using AWS autoscaling. For this reason, you can use the EC2 external inventory script.
+
+
+1. Ansible can take a folder name
+2. Folder can contain multiple files
+3. Ansible supports multiple file types. Eg: .py files
+4. Ansible Documentation - https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#inventory-script-example-aws-ec2
 
 
 
